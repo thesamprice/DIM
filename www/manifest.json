@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Destiny Item Manager",
+  "version": "2.8",
+  "description": "Robust interface to manage gear, weapons, and items in destiny.",
+  "icons": {
+    "16": "app/icon16.png",
+    "48": "app/icon48.png",
+    "128": "app/icon128.png"
+  },
+  "short_name": "DIM",
+  "background": {
+    "scripts": [
+      "app/extension-scripts/main.js"
+    ]
+  },
+  "permissions": [
+    "storage",
+    "*://*.bungie.net/*",
+    "cookies",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": "app/icon128.png"
+  },
+  "incognito": "split",
+  "offline_enabled": false
+}
