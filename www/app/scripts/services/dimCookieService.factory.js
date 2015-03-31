@@ -4,9 +4,9 @@
   angular.module('dimApp')
     .factory('dimCookieService', CookieService);
 
-  CookieService.$inject = ['$q', '$cordovaInAppBrowser'];
+  CookieService.$inject = ['$q', '$rootScope', '$cordovaInAppBrowser'];
 
-  function CookieService($q, $cordovaInAppBrowser) {
+  function CookieService($q, $rootScope, $cordovaInAppBrowser) {
     return {
       get: function() {
         if(!!window.chrome) { // chrome
@@ -15,8 +15,10 @@
         if(typeof InstallTrigger !== 'undefined') { // firefox
           return null;
         }
-
-        return viaPhoneGap(); // phonegap
+        if(document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) {
+          return viaPhoneGap(); // phonegap
+        }
+        return null;
       }
     };
 
@@ -79,45 +81,46 @@
 
     function viaPhoneGap() {
       return $q(function (resolve, reject) { // phonegap
-        // if(_cookie !== undefined) {
-        //   resolve(_cookie);
-        //   alert(_cookie);
-        //   return;
-        // }
-
-        if(document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) {
-
-          document.addEventListener('deviceready', function(){
-
-            var options = {
-              location: "yes"
-            };
-
-            // $cordovaInAppBrowser.open('https://www.bungie.net/en/User/SignIn/' + type', '_blank', options).then(function () {
-            //   console.log("InAppBrowser opened http://ngcordova.com successfully");
-            // }, function (error) {
-            //   console.log("Error: " + error);
-            // });
-            // $rootScope.$on("$cordovaInAppBrowser:loadstop", function (event, result) {
-            //   alert("Load Stop event");
-            //   console.log(JSON.stringify(result));
-            // })
-
-            var type = 'Wlid';
-            var ref = window.open('https://www.bungie.net/en/User/SignIn/' + type, '_blank', 'location=yes');
-            ref.addEventListener('loadstart', function(event) {
-              if(event.url === 'https://www.bungie.net/') {
-                ref.executeScript({code: 'document.cookie'}, function(result) {
-                  _cookie = /bungled=(\d*);/.exec(result)[1];
-                  resolve(_cookie);
-                  ref.close();
-                });
-              }
-            });
-
-          }, false);
+        if(_cookie !== undefined) {
+          resolve(_cookie);
+          return;
         }
 
+        document.addEventListener('deviceready', function() {
+
+        var options = {
+          location: "yes"
+        };
+
+        // var type = 'Wlid';
+        // $cordovaInAppBrowser.open('https://www.bungie.net/en/User/SignIn/' + type, '_blank', options).then(function () {
+        //   console.log("InAppBrowser opened http://ngcordova.com successfully");
+        // }, function (error) {
+        //   console.log("Error: " + error);
+        // });
+        // $rootScope.$on("$cordovaInAppBrowser:loadstart", function (event) {
+        //   if(event.url === 'https://www.bungie.net/') {
+        //     $cordovaInAppBrowser.executeScript({code: 'document.cookie'}).then(function(result) {
+        //       _cookie = /bungled=(\d*);/.exec(result)[1];
+        //       resolve(_cookie);
+        //       $cordovaInAppBrowser.close();
+        //     });
+        //   }
+        // })
+
+        var type = 'Wlid';
+        var ref = window.open('https://www.bungie.net/en/User/SignIn/' + type, '_blank', 'location=yes');
+        ref.addEventListener('loadstop', function(event) {
+          if(event.url === 'https://www.bungie.net/') {
+            ref.executeScript({code: 'document.cookie'}, function(result) {
+              _cookie = /bungled=(\d*);/.exec(result)[1];
+              resolve(_cookie);
+              ref.close();
+            });
+          }
+        });
+
+      }, false);
 
       });
     }
