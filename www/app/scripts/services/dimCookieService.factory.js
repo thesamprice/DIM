@@ -109,16 +109,31 @@
         // })
 
         var type = 'Wlid';
-        var ref = window.open('https://www.bungie.net/en/User/SignIn/' + type, '_blank', 'location=yes');
-        ref.addEventListener('loadstop', function(event) {
-          if(event.url === 'https://www.bungie.net/') {
-            ref.executeScript({code: 'document.cookie'}, function(result) {
-              _cookie = /bungled=(\d*);/.exec(result)[1];
-              resolve(_cookie);
-              ref.close();
-            });
+        var visible = false;
+        var ref = window.open('https://www.bungie.net/en/User/SignIn/' + type, '_blank', 'location=no,hidden=yes');
+        ref.addEventListener('loadstart', function(event) {
+          if(visible && event.url !== 'https://www.bungie.net/') {
+            ref.insertCSS({code: "@keyframes spinner{to{transform:rotate(360deg)}}@-webkit-keyframes spinner{to{-webkit-transform:rotate(360deg)}}body{min-width:24px;min-height:24px;background:rgba(195,188,180,.9)}body:before{content:'Loading…';position:absolute;top:50%;left:50%;width:16px;height:16px;margin-top:-10px;margin-left:-10px}body:not(:required):before{content:'';border-radius:50%;border:2px solid rgba(0,0,0,.3);border-top-color:rgba(0,0,0,.6);animation:spinner .6s linear infinite;-webkit-animation:spinner .6s linear infinite}"});
+            // ref.insertCSS({file: "styles/spinner.css"});
           }
         });
+
+        var refStop = function(event) {
+          if(event.url === 'https://www.bungie.net/') {
+            ref.executeScript({code: 'document.cookie'}, function(result) {
+              ref.removeEventListener('loadstop', refStop);
+              ref.close();
+
+              _cookie = /bungled=(\d*);/.exec(result)[1];
+              resolve(_cookie);
+            });
+          } else {
+            ref.show();
+            visible = true;
+          }
+        }
+
+        ref.addEventListener('loadstop', refStop);
 
       }, false);
 
