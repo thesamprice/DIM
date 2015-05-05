@@ -80,7 +80,15 @@
 /********** firefox */
 
     function viaFirefox() {
-      return null;
+      return $q(function (resolve, reject) { // firefox
+        if(_cookie !== undefined) {
+          resolve(_cookie);
+          return;
+        }
+
+        _cookie = document.cookie;
+        resolve(_cookie);
+      });
     }
 
 /********** phonegap */
