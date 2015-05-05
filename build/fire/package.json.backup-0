@@ -1,0 +1,12 @@
+{
+    "license": "MIT",
+    "description": "A basic add-on",
+    "author": "",
+    "title": "Destiny Item Manager",
+    "name": "dim",
+    "version": "3.0.0",
+    "main": "index.js",
+    "permissions": {
+      "cross-domain-content": ["https://bungie.net"]
+    }
+}

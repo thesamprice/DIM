@@ -4,9 +4,9 @@
     angular.module('dimApp')
       .factory('dimBungieService', BungieService);
 
-    BungieService.$inject = ['$rootScope', '$q', '$timeout', '$http', 'dimState', 'rateLimiterQueue', 'toaster'];
+    BungieService.$inject = ['$rootScope', '$q', '$timeout', '$http', 'dimCookieService', 'dimState', 'rateLimiterQueue', 'toaster'];
 
-    function BungieService($rootScope, $q, $timeout, $http, dimState, rateLimiterQueue, toaster) {
+    function BungieService($rootScope, $q, $timeout, $http, dimCookieService, dimState, rateLimiterQueue, toaster) {
       var apiKey = '57c5ff5864634503a0340ffdfbeb20c0';
       var tokenPromise = null;
       var platformPromise = null;
@@ -60,61 +60,8 @@
 
     /************************************************************************************************************************************/
 
-    function getBnetCookies() {
-      return $q(function(resolve, reject) {
-        chrome.cookies.getAll({
-          'domain': '.bungie.net'
-        }, getAllCallback);
-
-        function getAllCallback(cookies) {
-          if (_.size(cookies) > 0) {
-            resolve(cookies);
-          } else {
-            reject(new Error('No cookies found.'));
-          }
-        }
-      });
-    }
-
-    /************************************************************************************************************************************/
-
-    function getBungleToken() {
-      tokenPromise = tokenPromise || getBnetCookies()
-        .then(function(cookies) {
-          return $q(function(resolve, reject) {
-            var cookie = _.find(cookies, function(cookie) {
-              return cookie.name === 'bungled';
-            });
-
-            if (!_.isUndefined(cookie)) {
-              resolve(cookie.value);
-            } else {
-              if (_.isUndefined(location.search.split('reloaded')[1])) {
-                chrome.tabs.create({
-                  url: 'http://bungie.net',
-                  active: false
-                });
-
-                setTimeout(function() {
-                  window.location = window.location.origin + window.location.pathname + "?reloaded=true" + window.location.hash;
-                }, 5000);
-              }
-
-              reject(new Error('No bungled cookie found.'));
-            }
-          });
-        })
-        .catch(function(error) {
-          tokenPromise = null;
-        });
-
-      return tokenPromise;
-    }
-
-    /************************************************************************************************************************************/
-
     function getPlatforms() {
-      platformPromise = platformPromise || getBungleToken()
+      platformPromise = platformPromise || dimCookieService.get()
         .then(getBnetPlatformsRequest)
         .then($http)
         .then(networkError)
@@ -154,7 +101,7 @@
     /************************************************************************************************************************************/
 
     function getMembership(platform) {
-      membershipPromise = membershipPromise || getBungleToken()
+      membershipPromise = membershipPromise || dimCookieService.get()
         .then(getBnetMembershipReqest.bind(null, platform))
         .then($http)
         .then(networkError)
@@ -205,7 +152,7 @@
       var addMembershipIdToData = assignResultAndForward.bind(null, data, 'membershipId');
       var getMembershipPB = getMembership.bind(null, platform);
 
-      charactersPromise = charactersPromise || getBungleToken()
+      charactersPromise = charactersPromise || dimCookieService.get()
         .then(addTokenToData)
         .then(getMembershipPB)
         .then(function(membershipId) {
@@ -266,7 +213,7 @@
       var getMembershipPB = getMembership.bind(null, platform);
       var getCharactersPB = getCharacters.bind(null, platform);
 
-      var promise = getBungleToken()
+      var promise = dimCookieService.get()
         .then(addTokenToData)
         .then(getMembershipPB)
         .then(addMembershipIdToData)
@@ -365,7 +312,7 @@
       var addMembershipTypeToDataPB = assignResultAndForward.bind(null, data, 'membershipType');
       var getMembershipPB = getMembership.bind(null, platform);
 
-      var promise = getBungleToken()
+      var promise = dimCookieService.get()
         .then(addTokenToDataPB)
         .then(getMembershipPB)
         .then(addMembershipTypeToDataPB)
@@ -447,7 +394,7 @@
       var addMembershipTypeToDataPB = assignResultAndForward.bind(null, data, 'membershipType');
       var getMembershipPB = getMembership.bind(null, platform);
 
-      var promise = getBungleToken()
+      var promise = dimCookieService.get()
         .then(addTokenToDataPB)
         .then(getMembershipPB)
         .then(addMembershipTypeToDataPB)

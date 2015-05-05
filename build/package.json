@@ -1,0 +1,14 @@
+{
+    "license": "MIT", 
+    "description": "A basic add-on", 
+    "engines": {
+        "firefox": ">=36", 
+        "fennec": ">=38.0a1"
+    }, 
+    "author": "", 
+    "title": "My Jetpack Addon", 
+    "version": "0.0.1", 
+    "main": "index.js", 
+    "id": "jid1-V4eEjGLfVZN57Q", 
+    "name": "fire"
+}
