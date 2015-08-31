@@ -13,6 +13,8 @@ module.exports = function(grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-beep');
+
   // Automatically load required grunt tasks
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin'
@@ -143,6 +145,7 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
+          extDot: 'last',
           cwd: '<%= config.app %>/scripts',
           src: '{,*/}*.js',
           dest: '.tmp/scripts',
@@ -152,6 +155,7 @@ module.exports = function(grunt) {
       test: {
         files: [{
           expand: true,
+          extDot: 'last',
           cwd: 'test/spec',
           src: '{,*/}*.js',
           dest: '.tmp/spec',
@@ -341,6 +345,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           dot: true,
+          extDot: 'last',
           cwd: '<%= config.app %>',
           dest: '<%= config.dist %>',
           src: [
@@ -363,6 +368,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           dot: true,
+          extDot: 'last',
           cwd: '.tmp/scripts/',
           src: '{,*/}*.js',
           dest: '.tmp/concat/scripts'
@@ -377,6 +383,7 @@ module.exports = function(grunt) {
         devFile: 'bower_components/modernizr/modernizr.js',
         outputFile: '<%= config.dist %>/scripts/vendor/modernizr.js',
         files: {
+          extDot: 'last',
           src: [
             '<%= config.dist %>/scripts/{,*/}*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
@@ -405,13 +412,38 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('gsd', 'Getting Stuff Done!', function(target) {
+    var tasks = ['build:dist'];
+
+    if (grunt.option('beep')) {
+      tasks.push('beep:**');
+    }
+
+    grunt.config('watch.babel.tasks', tasks);
+    grunt.config('watch.sass.tasks', tasks);
+    grunt.config('watch.styles.tasks', tasks);
+    grunt.config('watch.gruntfile.tasks', []);
+
+    return grunt.task.run([
+      'build:dist',
+      'watch'
+    ]);
+  });
+
 
   grunt.registerTask('serve', 'start the server and preview your app', function(target) {
 
     if (target === 'dist') {
-      grunt.config('watch.babel.tasks', ['build:dist']);
-      grunt.config('watch.sass.tasks', ['build:dist']);
-      grunt.config('watch.styles.tasks', ['build:dist']);
+      var tasks = ['build:dist'];
+
+      if (grunt.option('beep')) {
+        tasks.push('beep:**');
+      }
+
+
+      grunt.config('watch.babel.tasks', tasks);
+      grunt.config('watch.sass.tasks', tasks);
+      grunt.config('watch.styles.tasks', tasks);
 
       return grunt.task.run([
         'build',
