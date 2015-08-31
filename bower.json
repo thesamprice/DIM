@@ -1,31 +1,20 @@
 {
-  "name": "Destiny Item Manager",
-  "description": "A Google Chrome extension that can move items between Guardians and their Vault.",
-  "version": "2.2.0",
-  "homepage": "https://github.com/kyleshay/DIM",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kyleshay/DIM.git"
-  },
+  "name": "v4",
+  "private": true,
   "dependencies": {
-    "underscore": "~1.8.x",
-    "angular": "1.4.x",
-    "angular-animate": "1.4.x",
+    "angular": "~1.4.5",
+    "angular-animate": "~1.4.5",
     "angular-chrome-storage": "infomofo/angular-chrome-storage",
-    "angular-messages": "~1.3.x",
-    "angular-native-dragdrop": "https://github.com/angular-dragdrop/angular-dragdrop.git",
-    "angularjs-toaster": "~0.4.12",
     "angular-ui-router": "~0.2.x",
-    "Angular.uuid2": "https://github.com/MBehtemam/angular-uuid.git",
-    "ngDialog": "~0.3.x",
-    "lz-string": "https://github.com/pieroxy/lz-string.git#~1.4.x",
-    "angular-promise-tracker": "~2.1.0",
-    "jquery": "~2",
-    "verge": "https://github.com/ryanve/verge.git",
-    "ScrollToFixed": "https://github.com/bigspotteddog/ScrollToFixed.git#~1.0.6",
-    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.4.5"
+    "bootstrap": "https://github.com/DestinyItemManager/bootstrap.git#v4-dev",
+    "components-font-awesome": "~4.4.0",
+    "hammerjs": "~2.0.4",
+    "modernizr": "~2.8.3",
+    "ngHammer": "https://github.com/DestinyItemManager/ngHammer.git",
+    "underscore": "~1.8.x"
   },
-  "resolutions": {
-    "angular": "1.4.x"
+  "devDependencies": {
+    "chai": "~3.2.0",
+    "mocha": "~2.2.5"
   }
 }

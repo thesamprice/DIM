@@ -1,13 +1,4 @@
-app/vendor/
-dist/
-.settings/
-.idea/
-node_modules/
-build/common
-build/img
-build/manifest
-build/*.json
-build/manifest.zip
-
-!do-not-delete.txt
-!build/img/misc/missing_icon.png
+node_modules
+dist
+.tmp
+bower_components

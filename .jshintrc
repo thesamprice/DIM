@@ -1,7 +1,0 @@
-{
-  "globals": {
-    "angular": true,
-    "verge": true,
-    "$": true
-  }
-}

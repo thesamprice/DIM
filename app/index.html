@@ -1,95 +1,85 @@
 <!doctype html>
-<html lang="" ng-app="dimApp" ng-csp>
+<html class="no-js" lang="" ng-app="dimApp">
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DIM v3</title>
+  <title>DIM v4</title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="48x48.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="128x128.png">
+  <link rel="apple-touch-icon" href="48x48.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="48x48.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="128x128.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="128x128.png">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.css" />
+  <!-- endbower -->
+  <script src="/bower_components/bootstrap/dist/css/bootstrap.css"></script>
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+  <!-- build:js scripts/vendor/modernizr.js -->
+  <script src="bower_components/modernizr/modernizr.js"></script>
+  <!-- endbuild -->
+
 </head>
 
-<body ng-app="dimApp" ng-strict-di>
-  <div ng-controller="dimAppCtrl as app" ng-click="app.about = false; trackActivity()">
-    <div id="header">
-      <div class="content">
-        <span class="header-right">
-          <div dim-platform-choice class="header-right"></div>
-          <div dim-search-filter class="header-right"></div>
-          <div class="header-right"><span class="link" ng-click="app.showFilters($event)">Filters</span></div>
-        </span>
-        <span>Destiny Item Manager v3</span>
-        <span class="link" ng-click="app.showAbout($event)">About</span>
-        <span class="link" ng-click="app.showSetting($event)">Settings</span>
-        <span class="link" ng-click="app.showSupport($event)">Support DIM</span>
-        <span class="link" ng-click="app.refresh($event)">Refresh</span>
-        <div class="my-super-awesome-loading-box" ng-show="loadingTracker.active()">
-          <img src="images/712.GIF" style="width: 22px !important; height: 22px !important;" alt="" />
-        </div>
-      </div>
-    </div>
-    <toaster-container toaster-options="{ 'time-out': 10000, limit: 6 }"></toaster-container>
-    <div class="about modal-dialog" ng-show="app.about"></div>
-    <div class="donate modal-dialog" ng-show="app.donate"></div>
-    <div class="filters modal-dialog" ng-show="app.filters"></div>
-    <div id="content" ui-view></div>
+<body>
+
+  <div class="container">
   </div>
 
-  <!-- begin vendor scripts -->
-  <!-- <script src="vendor/jquery/dist/jquery.min.js?v=3.0.18"></script>
-  <script src="vendor/angular/angular.min.js?v=3.0.18"></script>
-  <script src="vendor/angular-ui-router/release/angular-ui-router.min.js?v=3.0.18"></script>
-  <script src="vendor/angular-animate/angular-animate.min.js?v=3.0.18"></script>
-  <script src="scripts/toaster.js?v=3.0.18"></script>
-  <script src="vendor/angular-native-dragdrop/draganddrop.js?v=3.0.18"></script>
-  <script src="vendor/ngDialog/js/ngDialog.min.js?v=3.0.18"></script>
-  <script src="vendor/Angular.uuid2/dist/angular-uuid2.min.js?v=3.0.18"></script>
-  <script src="vendor/underscore/underscore-min.js?v=3.0.18"></script>
-  <script src="vendor/lz-string/libs/lz-string.min.js?v=3.0.18"></script>
-  <script src="vendor/angular-chrome-storage/angular-chrome-storage.js?v=3.0.18"></script>
-  <script src="vendor/angular-messages/angular-messages.min.js?v=3.0.18"></script>
-  <script src="vendor/angular-promise-tracker/promise-tracker.js?v=3.0.18"></script>
-  <script src="vendor/verge/verge.js?v=3.0.18"></script> -->
-  <!-- end vendor scripts -->
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="/bower_components/modernizr/modernizr.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-chrome-storage/angular-chrome-storage.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/hammerjs/hammer.js"></script>
+  <script src="/bower_components/ngHammer/ngHammer.js"></script>
+  <script src="/bower_components/underscore/underscore.js"></script>
+  <!-- endbower -->
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbuild -->
 
-  <script src="scripts/vendor.min.js?v=3.0.18"></script>
-  <script src="scripts/ScrollToFixed.js?v=3.0.18"></script>
-  <script src="vendor/angular-chrome-storage/angular-chrome-storage.js?v=3.0.18"></script>
-  <script src="vendor/angular-hotkeys/build/hotkeys.js?v=3.0.18"></script>
 
-  <!-- begin app scripts -->
-  <script src="scripts/dimApp.module.js?v=3.0.18"></script>
-  <script src="scripts/dimApp.config.js?v=3.0.18"></script>
-  <script src="scripts/services/dimRateLimit.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimBungieService.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimItemDefinitions.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimTalentDefinitions.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimPlatformService.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimLoadoutService.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimSettingsService.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimStoreService.factory.js?v=3.0.18"></script>
-  <script src="scripts/services/dimItemService.factory.js?v=3.0.18"></script>
-  <script src="scripts/loadout/dimLoadout.directive.js?v=3.0.18"></script>
-  <script src="scripts/loadout/dimLoadoutPopup.directive.js?v=3.0.18"></script>
-  <script src="scripts/shell/dimAppCtrl.controller.js?v=3.0.18"></script>
-  <script src="scripts/shell/dimSettingsCtrl.controller.js?v=3.0.18"></script>
-  <script src="scripts/shell/dimPlatformChoice.directive.js?v=3.0.18"></script>
-  <script src="scripts/shell/dimSearchFilter.directive.js?v=3.0.18"></script>
-  <script src="scripts/shell/dimClickAnywhereButHere.directive.js?v=3.0.18"></script>
-  <script src="scripts/store/dimStores.directive.js?v=3.0.18"></script>
-  <script src="scripts/store/dimStoreItems.directive.js?v=3.0.18"></script>
-  <script src="scripts/store/dimStoreItem.directive.js?v=3.0.18"></script>
-  <script src="scripts/store/dimStoreHeading.directive.js?v=3.0.18"></script>
-  <script src="scripts/move-popup/dimMovePopup.directive.js?v=3.0.18"></script>
-  <script src="scripts/move-popup/dimMoveItemProperties.directive.js?v=3.0.18"></script>
-  <script src="scripts/google.js?v=3.0.18"></script>
-  <!-- end app scripts -->
-  <!-- <script src="scripts/scripts.min.js?v=3.0.18"></script> -->
+  <!-- build:js(.) scripts/plugins.js -->
+  <!-- endbuild -->
+
+
+  <!-- build:js(.tmp) scripts/main.js -->
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] =
+        function() {
+          (b[l].q = b[l].q || []).push(arguments)
+        });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = 'https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-60316581-3');
+    ga('send', 'pageview');
+  </script>
 </body>
 
 </html>
