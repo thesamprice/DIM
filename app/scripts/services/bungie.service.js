@@ -1,14 +1,15 @@
 (function() {
   'use strict';
 
-  angular.module('app.services').factory('bungieService', BungieService);
+  angular.module('app.services').factory('bungieService', bungieService);
 
-  BungieService.$inject = ['$q'];
+  bungieService.$inject = ['$q'];
 
-  function BungieService($q) {
-    var apiKey = '57c5ff5864634503a0340ffdfbeb20c0';
+  function bungieService($q) {
+    let apiKey = '57c5ff5864634503a0340ffdfbeb20c0';
 
-    var service = {
+    let service = {
+      getToken: getBungleToken,
       getPlatforms: getPlatforms,
       getStores: getStores,
       transferItem: transferItem,
@@ -39,7 +40,7 @@
     function getBungleToken() {
       return getBnetCookies()
         .then((cookies) => {
-            var cookie = _.find(cookies, function(cookie) {
+            let cookie = _.find(cookies, function(cookie) {
               return cookie.name === 'bungled';
             });
 

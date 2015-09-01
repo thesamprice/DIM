@@ -36,7 +36,7 @@
 
 <body>
 
-  <div class="container">
+  <div class="container" ui-view="content">
   </div>
 
   <!-- build:js(.) scripts/vendor.js -->
@@ -63,8 +63,14 @@
   <script src="scripts/analytics.js"></script>
   <script src="scripts/app.module.js"></script>
   <script src="scripts/app.config.js"></script>
+  <script src="scripts/login/login.module.js"></script>
+  <script src="scripts/login/principal.factory.js"></script>
+  <script src="scripts/login/authorization.factory.js"></script>
   <script src="scripts/services/services.module.js"></script>
   <script src="scripts/services/bungie.service.js"></script>
+  <script src="scripts/shell/shell.module.js"></script>
+  <script src="scripts/shell/signin.controller.js"></script>
+  <script src="scripts/shell/home.controller.js"></script>  
   <!-- endbuild -->
 
 </body>
