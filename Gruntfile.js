@@ -416,7 +416,7 @@ module.exports = function(grunt) {
     var tasks = ['build:dist'];
 
     if (grunt.option('beep')) {
-      tasks.push('beep:**');
+      tasks.push('beep:*');
     }
 
     grunt.config('watch.babel.tasks', tasks);

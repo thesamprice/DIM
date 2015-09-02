@@ -6,16 +6,21 @@
   signinCtrl.$inject = ['$scope', '$state', 'principal'];
 
   function signinCtrl($scope, $state, principal) {
+    $scope.username = principal.identity.name;
+    
     $scope.signin = function() {
 
       // here, we fake authenticating and give a fake user
-      principal.authenticate({
-        name: 'Test User',
-        roles: ['User']
-      });
+      // principal.authenticate({
+      //   name: 'Test User',
+      //   roles: ['User']
+      // });
 
-      if ($scope.returnToState) $state.go($scope.returnToState.name, $scope.returnToStateParams);
-      else $state.go('home');
+      if ($scope.returnToState) {
+        $state.go($scope.returnToState.name, $scope.returnToStateParams);
+      } else {
+        $state.go('home');
+      }
     };
   }
 }());

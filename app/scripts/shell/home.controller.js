@@ -6,6 +6,11 @@
   homeCtrl.$inject = ['$scope', '$state', 'principal'];
 
   function homeCtrl($scope, $state, principal) {
+    principal.identity()
+      .then((identity) => {
+        $scope.username = identity.name;
+      });
+
     $scope.signout = function() {
       principal.authenticate(null);
       $state.go('signin');

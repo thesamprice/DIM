@@ -13,6 +13,9 @@
 
     $compileProvider.imgSrcSanitizationWhitelist(newImgSrcSanitizationWhiteList);
 
+    // route to root if no valid route found
+    $urlRouterProvider.otherwise('/');
+
     $stateProvider.state('site', {
         'abstract': true,
         resolve: {

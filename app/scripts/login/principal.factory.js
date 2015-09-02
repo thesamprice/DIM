@@ -3,9 +3,9 @@
 
   angular.module('app.login').factory('principal', principal);
 
-  principal.$inject = ['$q', '$http', '$timeout'];
+  principal.$inject = ['$q','bungieService'];
 
-  function principal($q, $http, $timeout) {
+  function principal($q, bungieService) {
     let _identity = undefined;
     let _authenticated = false;
 
@@ -82,10 +82,23 @@
           // not logged in
           let self = this;
 
-          $timeout(() => {
-            self.authenticate(null);
-            resolve(_identity);
-          }, 1000);
+          bungieService.getToken()
+            .then((token) => {
+              self.authenticate({
+                name: token,
+                roles: ['User']
+              });
+              resolve(_identity);
+            })
+            .catch((err) => {
+              self.authenticate(null);
+              resolve(_identity);
+            });
+
+          // $timeout(() => {
+          //   self.authenticate(null);
+          //   resolve(_identity);
+          // }, 1000);
         }
       });
     }
