@@ -23,7 +23,8 @@ module.exports = function(grunt) {
   // Configurable paths
   var config = {
     app: 'app',
-    dist: 'dist'
+    dist: 'dist',
+    gsd: 'gsd'
   };
 
   // Define the configuration for all the tasks
@@ -40,22 +41,26 @@ module.exports = function(grunt) {
       },
       babel: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['babel:dist']
+        tasks: ['babel:dist', 'copy:gsd']
       },
       babelTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['babel:test', 'test:watch']
+      },
+      views: {
+        files: ['<%= config.app %>/index.html', '<%= config.app %>/views/{,*/}*.html'],
+        tasks: ['copy:gsd']
       },
       gruntfile: {
         files: ['Gruntfile.js']
       },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'postcss']
+        tasks: ['sass:server', 'postcss', 'copy:gsd']
       },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss']
+        tasks: ['newer:copy:styles', 'postcss', 'copy:gsd']
       }
     },
 
@@ -114,7 +119,8 @@ module.exports = function(grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      gsd: 'gsd'
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -258,7 +264,7 @@ module.exports = function(grunt) {
         ],
         patterns: {
           json: [
-              [/(.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
+            [/(.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
           ]
         }
       },
@@ -364,6 +370,49 @@ module.exports = function(grunt) {
           dest: '<%= config.dist %>'
         }]
       },
+      gsd: {
+        files: [{
+          expand: true,
+          dot: true,
+          extDot: 'last',
+          cwd: '<%= config.app %>',
+          dest: '<%= config.gsd %>',
+          src: [
+            '*.{ico,png,txt}',
+            'images/{,*/}*.webp',
+            '{,*/}*.html',
+            '{,*/}*.json',
+            'chrome-ext-scripts/{,*/}*.js',
+            'styles/fonts/{,*/}*.*'
+          ]
+        }, {
+          expand: true,
+          dot: true,
+          cwd: '.',
+          src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
+          dest: '<%= config.gsd %>'
+        }, {
+          expand: true,
+          dot: true,
+          extDot: 'last',
+          cwd: '.tmp/styles',
+          src: [
+            '{,*/}*.css',
+            '{,*/}*.css.map'
+          ],
+          dest: '<%= config.gsd %>/styles'
+        }, {
+          expand: true,
+          dot: true,
+          extDot: 'last',
+          cwd: '.tmp/scripts',
+          src: [
+            '{,*/}*.js',
+            '{,*/}*.js.map'
+          ],
+          dest: '<%= config.gsd %>/scripts'
+        }]
+      },
       babel: {
         files: [{
           expand: true,
@@ -413,23 +462,73 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('gsd', 'Getting Stuff Done!', function(target) {
-    var tasks = ['build:dist'];
+    // var tasks = ['build:dist'];
+    //
+    // if (grunt.option('beep')) {
+    //   tasks.push('beep:*');
+    // }
+    //
+    // grunt.config('watch.babel.tasks', tasks);
+    // grunt.config('watch.sass.tasks', tasks);
+    // grunt.config('watch.styles.tasks', tasks);
+    // grunt.config('watch.gruntfile.tasks', []);
 
-    if (grunt.option('beep')) {
-      tasks.push('beep:*');
-    }
-
-    grunt.config('watch.babel.tasks', tasks);
-    grunt.config('watch.sass.tasks', tasks);
-    grunt.config('watch.styles.tasks', tasks);
-    grunt.config('watch.gruntfile.tasks', []);
-
-    return grunt.task.run([
-      'build:dist',
+    grunt.task.run([
+      'clean:gsd',
+      'build',
+      'copy:gsd',
+      'a',
+      // 'copy:gsd',
       'watch'
     ]);
   });
 
+
+  grunt.registerTask('a', 'Getting Stuff Done!', function(target) {
+    // var tasks = ['build:dist'];
+    //
+    // if (grunt.option('beep')) {
+    //   tasks.push('beep:*');
+    // }
+    //
+    // grunt.config('watch.babel.tasks', tasks);
+    // grunt.config('watch.sass.tasks', tasks);
+    // grunt.config('watch.styles.tasks', tasks);
+    // grunt.config('watch.gruntfile.tasks', []);
+
+    // grunt.task.run([
+    //   'build'
+    //   // 'copy:gsd',
+    //   // 'watch'
+    // ]);
+
+    var concatFiles = grunt.config('concat.generated.files');
+
+    var files = [];
+
+    for (var i = 0; i < concatFiles.length; i++) {
+      for (var j = 0; j < concatFiles[i].src.length; j++) {
+        concatFiles[i].src[j] = concatFiles[i].src[j].replace("app\\bower", "bower");
+      }
+
+      var file = {
+        expand: true,
+        dot: true,
+        extDot: 'last',
+        cwd: '.',
+        dest: '<%= config.gsd %>',
+        src: concatFiles[i].src
+      }
+
+      files.push(file);
+    }
+
+    grunt.config('copy.gsdScripts', {
+      files: files
+    });
+
+    grunt.task.run(['copy:gsdScripts']);
+  });
 
   grunt.registerTask('serve', 'start the server and preview your app', function(target) {
 

@@ -85,7 +85,7 @@
           bungieService.getToken()
             .then((token) => {
               self.authenticate({
-                name: token,
+                name: 'apple ' + token,
                 roles: ['User']
               });
               resolve(_identity);
