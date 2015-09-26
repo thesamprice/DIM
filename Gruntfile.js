@@ -530,41 +530,41 @@ module.exports = function(grunt) {
     grunt.task.run(['copy:gsdScripts']);
   });
 
-  grunt.registerTask('serve', 'start the server and preview your app', function(target) {
+  // grunt.registerTask('serve', 'start the server and preview your app', function(target) {
+  //
+  //   if (target === 'dist') {
+  //     var tasks = ['build:dist'];
+  //
+  //     if (grunt.option('beep')) {
+  //       tasks.push('beep:**');
+  //     }
+  //
+  //
+  //     grunt.config('watch.babel.tasks', tasks);
+  //     grunt.config('watch.sass.tasks', tasks);
+  //     grunt.config('watch.styles.tasks', tasks);
+  //
+  //     return grunt.task.run([
+  //       'build',
+  //       'browserSync:dist',
+  //       'watch'
+  //     ]);
+  //   }
+  //
+  //   grunt.task.run([
+  //     'clean:server',
+  //     'wiredep',
+  //     'concurrent:server',
+  //     'postcss',
+  //     'browserSync:livereload',
+  //     'watch'
+  //   ]);
+  // });
 
-    if (target === 'dist') {
-      var tasks = ['build:dist'];
-
-      if (grunt.option('beep')) {
-        tasks.push('beep:**');
-      }
-
-
-      grunt.config('watch.babel.tasks', tasks);
-      grunt.config('watch.sass.tasks', tasks);
-      grunt.config('watch.styles.tasks', tasks);
-
-      return grunt.task.run([
-        'build',
-        'browserSync:dist',
-        'watch'
-      ]);
-    }
-
-    grunt.task.run([
-      'clean:server',
-      'wiredep',
-      'concurrent:server',
-      'postcss',
-      'browserSync:livereload',
-      'watch'
-    ]);
-  });
-
-  grunt.registerTask('server', function(target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run([target ? ('serve:' + target) : 'serve']);
-  });
+  // grunt.registerTask('server', function(target) {
+  //   grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+  //   grunt.task.run([target ? ('serve:' + target) : 'serve']);
+  // });
 
   grunt.registerTask('test', function(target) {
     if (target !== 'watch') {

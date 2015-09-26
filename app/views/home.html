@@ -1,4 +1,4 @@
-<p>
+<!-- <p>
   Token: super duper {{ username }}
 </p>
 
@@ -6,4 +6,39 @@ This is the home page content. If you see this, you are logged in. You will rema
 <br />
 <a href="" ui-sref="restricted">Go to restricted page (will show you Access Denied)</a>
 <br />
-<a href="" ng-click="signout()">Click to sign out</a>
+<a href="" ng-click="signout()">Click to sign out</a> -->
+<style>
+  .container-fluid {
+    background-color: #eee;
+  }
+
+  .dim-app-header {
+    background-color: #ccf;
+  }
+
+  .dim-character-header {
+    background-color: #fcc;
+  }
+
+</style>
+<div class="container-fluid">
+  <div class="row dim-app-header">
+    <div class="xs-col-12">
+      Header
+    </div>
+  </div>
+  <div class="row dim-character-header">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      Character 1
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 1
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 1
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Vault
+    </div>
+  </div>
+</div>
