@@ -20,10 +20,97 @@ This is the home page content. If you see this, you are logged in. You will rema
     background-color: #fcc;
   }
 
+  .dim-item-category {
+    background-color: #cfc;
+  }
+
+  .col-xs-15, .col-sm-15, .col-md-15, .col-lg-15, .col-xl-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: .9375rem;
+    padding-left: .9375rem;
+  }
+
+  .dim-character-items .row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    margin-right: -.2rem;
+    margin-left: -.2rem;
+
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+
+  .dim-character-items .col-xs-1, .dim-character-items .col-xs-2, .dim-character-items .col-xs-3, .dim-character-items .col-xs-4, .dim-character-items .col-xs-5, .dim-character-items .col-xs-6, .dim-character-items .col-xs-7, .dim-character-items .col-xs-8, .dim-character-items .col-xs-9, .dim-character-items .col-xs-10, .dim-character-items .col-xs-11, .dim-character-items .col-xs-12, .dim-character-items .col-sm-1, .dim-character-items .col-sm-2, .dim-character-items .col-sm-3, .dim-character-items .col-sm-4,
+  .dim-character-items.col-sm-5, .dim-character-items .col-sm-6, .dim-character-items .col-sm-7, .dim-character-items .col-sm-8, .dim-character-items .col-sm-9, .dim-character-items .col-sm-10, .dim-character-items .col-sm-11, .dim-character-items .col-sm-12, .dim-character-items .col-md-1, .dim-character-items .col-md-2, .dim-character-items .col-md-3, .dim-character-items .col-md-4, .dim-character-items .col-md-5, .dim-character-items .col-md-6, .dim-character-items .col-md-7, .dim-character-items .col-md-8, .dim-character-items .col-md-9,
+  .dim-character-items .col-md-10, .dim-character-items .col-md-11, .dim-character-items .col-md-12, .dim-character-items .col-lg-1, .dim-character-items .col-lg-2, .dim-character-items .col-lg-3, .dim-character-items .col-lg-4, .dim-character-items .col-lg-5, .dim-character-items .col-lg-6, .dim-character-items .col-lg-7, .dim-character-items .col-lg-8, .dim-character-items .col-lg-9, .dim-character-items .col-lg-10, .dim-character-items .col-lg-11, .dim-character-items .col-lg-12, .dim-character-items .col-xl-1,
+  .dim-character-items .col-xl-2, .dim-character-items .col-xl-3, .dim-character-items .col-xl-4, .dim-character-items .col-xl-5, .dim-character-items .col-xl-6, .dim-character-items .col-xl-7, .dim-character-items .col-xl-8, .dim-character-items .col-xl-9, .dim-character-items .col-xl-10, .dim-character-items .col-xl-11, .dim-character-items .col-xl-12,
+  .dim-character-items .col-xs-15, .dim-character-items .col-sm-15, .dim-character-items .col-md-15, .dim-character-items .col-lg-15, .dim-character-items .col-xl-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: .2rem;
+    padding-left: .2rem;
+  }
+
+  .col-xs-15 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 20%;
+        -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+  }
+
+  @media (min-width: 34em) {
+    .col-sm-15 {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 20%;
+          -ms-flex: 0 0 20%;
+              flex: 0 0 20%;
+    }
+  }
+
+  @media (min-width: 48em) {
+    .col-md-15 {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 20%;
+          -ms-flex: 0 0 20%;
+              flex: 0 0 20%;
+    }
+  }
+
+  @media (min-width: 62em) {
+    .col-lg-15 {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 20%;
+          -ms-flex: 0 0 20%;
+              flex: 0 0 20%;
+    }
+  }
+
+  @media (min-width: 75em) {
+    .col-xl-15 {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 20%;
+          -ms-flex: 0 0 20%;
+              flex: 0 0 20%;
+    }
+  }
+
+  .item {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    /*width: 100vh;
+    height: 100vh;*/
+    background-color: blue;
+    margin: .2rem 0;
+  }
 </style>
 <div class="container-fluid">
   <div class="row dim-app-header">
-    <div class="xs-col-12">
+    <div class="col-xs-12">
       Header
     </div>
   </div>
@@ -32,13 +119,373 @@ This is the home page content. If you see this, you are logged in. You will rema
       Character 1
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 1
+      Character 2
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 1
+      Character 3
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
       Vault
+    </div>
+  </div>
+  <div class="row dim-item-category">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Weapons
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Weapons
+    </div>
+  </div>
+  <div class="row dim-item-type">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Primary
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Primary
+    </div>
+  </div>
+  <div class="row dim-items">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="row dim-character-items">
+        <div class="col-xs-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="item">Show All</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 2
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 3
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Vault
+    </div>
+  </div>
+  <div class="row dim-item-type">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Special
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Special
+    </div>
+  </div>
+  <div class="row dim-items">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="row dim-character-items">
+        <div class="col-xs-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="item">Show All</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 2
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 3
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Vault
+    </div>
+  </div>
+  <div class="row dim-item-type">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Heavy
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Heavy
+    </div>
+  </div>
+  <div class="row dim-items">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="row dim-character-items">
+        <div class="col-xs-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="item">Show All</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 2
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 3
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Vault
+    </div>
+  </div>
+  <div class="row dim-item-category">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Weapons
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Weapons
+    </div>
+  </div>
+  <div class="row dim-item-type">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Helmet
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Helmet
+    </div>
+  </div>
+  <div class="row dim-items">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="row dim-character-items">
+        <div class="col-xs-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="item">Show All</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 2
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 3
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Vault
+    </div>
+  </div>
+  <div class="row dim-item-type">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Gauntlets
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Gauntlets
+    </div>
+  </div>
+  <div class="row dim-items">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="row dim-character-items">
+        <div class="col-xs-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="item">Show All</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 2
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 3
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Vault
+    </div>
+  </div>
+  <div class="row dim-item-type">
+    <div class="col-xs-12 col-sm-6 col-lg-9">
+      Chest
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Chest
+    </div>
+  </div>
+  <div class="row dim-items">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
+      <div class="row dim-character-items">
+        <div class="col-xs-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="item">Show All</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+            <div class="col-xs-15">
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 2
+    </div>
+    <div class="col-xs-12 col-lg-3 hidden-md-down">
+      Character 3
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
+      Vault
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 hidden-sm-up">
+      <div style="height: 60vh"></div>
     </div>
   </div>
 </div>
