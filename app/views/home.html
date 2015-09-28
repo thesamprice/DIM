@@ -110,17 +110,19 @@ This is the home page content. If you see this, you are logged in. You will rema
   }
 
   .equipped {
+    background-color: rgba(0,0,0,.1);
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 3.5rem;
-        -ms-flex: 0 0 3.5rem;
-            flex: 0 0 3.5rem;
+    -webkit-flex: 0 0 3.25rem;
+        -ms-flex: 0 0 3.25rem;
+            flex: 0 0 3.25rem;
+    margin-right: .25rem;
   }
 
   .unequipped {
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 3.5rem;
-        -ms-flex: 0 0 3.5rem;
-            flex: 0 0 3.5rem;
+    -webkit-box-flex: 3;
+    -webkit-flex: 3 0 3.25rem;
+        -ms-flex: 3 0 3.25rem;
+            flex: 3 0 3.25rem;
   }
 
   .item {
@@ -129,10 +131,17 @@ This is the home page content. If you see this, you are logged in. You will rema
     padding-bottom: 100%;*/
     /*width: 100vh;
     height: 100vh;*/
-    width: 3.125em;
-    height: 3.125em;
+    display: inline-block;
+    width: 3.25em;
+    height: 3.25em;
     background-color: blue;
-    margin: .2rem 0;
+  }
+
+  .select-all {
+    background-color: yellow;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
   }
 </style>
 <div class="container-fluid">
@@ -175,30 +184,77 @@ This is the home page content. If you see this, you are logged in. You will rema
     <div class="col-xs-12 col-sm-6 col-lg-3">
       <div class="dim-character-items">
         <div class="equipped">
-          <div class="item"></div>
-          <div class="item"></div>
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
         </div>
         <div class="unequipped">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
         </div>
       </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 2
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 3
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
-      Vault
+      <div class="dim-character-items">
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row dim-item-type">
@@ -214,12 +270,9 @@ This is the home page content. If you see this, you are logged in. You will rema
       <div class="dim-character-items">
         <div class="equipped">
           <div class="item"></div>
-          <div class="item"></div>
+          <div class="item select-all">Select All</div>
         </div>
         <div class="unequipped">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
@@ -230,13 +283,62 @@ This is the home page content. If you see this, you are logged in. You will rema
       </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 2
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 3
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
-      Vault
+      <div class="dim-character-items">
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row dim-item-type">
@@ -252,13 +354,9 @@ This is the home page content. If you see this, you are logged in. You will rema
       <div class="dim-character-items">
         <div class="equipped">
           <div class="item"></div>
-          <div class="item"></div>
+          <div class="item select-all">Select All</div>
         </div>
         <div class="unequipped">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
@@ -268,13 +366,58 @@ This is the home page content. If you see this, you are logged in. You will rema
       </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 2
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 3
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
-      Vault
+      <div class="dim-character-items">
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row dim-item-category">
@@ -298,12 +441,9 @@ This is the home page content. If you see this, you are logged in. You will rema
       <div class="dim-character-items">
         <div class="equipped">
           <div class="item"></div>
-          <div class="item"></div>
+          <div class="item select-all">Select All</div>
         </div>
         <div class="unequipped">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
@@ -314,13 +454,66 @@ This is the home page content. If you see this, you are logged in. You will rema
       </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 2
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 3
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
-      Vault
+      <div class="dim-character-items">
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row dim-item-type">
@@ -336,15 +529,9 @@ This is the home page content. If you see this, you are logged in. You will rema
       <div class="dim-character-items">
         <div class="equipped">
           <div class="item"></div>
-          <div class="item"></div>
+          <div class="item select-all">Select All</div>
         </div>
         <div class="unequipped">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
@@ -352,13 +539,63 @@ This is the home page content. If you see this, you are logged in. You will rema
       </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 2
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 3
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
-      Vault
+      <div class="dim-character-items">
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row dim-item-type">
@@ -374,13 +611,9 @@ This is the home page content. If you see this, you are logged in. You will rema
       <div class="dim-character-items">
         <div class="equipped">
           <div class="item"></div>
-          <div class="item"></div>
+          <div class="item select-all">Select All</div>
         </div>
         <div class="unequipped">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
           <div class="item"></div>
@@ -390,13 +623,61 @@ This is the home page content. If you see this, you are logged in. You will rema
       </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 2
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-lg-3 hidden-md-down">
-      Character 3
+      <div class="dim-character-items">
+        <div class="equipped">
+            <div class="item"></div>
+            <div class="item select-all">Select All</div>
+        </div>
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3 hidden-xs-down">
-      Vault
+      <div class="dim-character-items">
+        <div class="unequipped">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
