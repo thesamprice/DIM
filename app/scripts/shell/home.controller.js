@@ -16,6 +16,14 @@
       $state.go('signin');
     };
 
+    // $scope.inventoryChangeCol = function() {
+    //   var me = $scope;
+    //   console.log("Inventory Col = " + me.inventory.colWidth)
+    // }
+
+    // $scope.vaultChangeCol = function() {
+    //   var me = $scope;
+    //   console.log("Vault Col = " + me.vault.colWidth)
     $scope.vaultChangeCol = function(width) {
       console.log(width)
     }
