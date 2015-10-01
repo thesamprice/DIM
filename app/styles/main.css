@@ -99,6 +99,16 @@ body > div, #header {
 body.about .about, body.app-settings .app-settings, body.support .support, body.fitlers .fitlers {
   display: inline-block;
 }
+
+#content {
+  padding: 0 10px;
+}
+
+.showItemViewer #content {
+  padding-right: 300px;
+  overflow-x: scroll;
+}
+
 .button-name {
   float: left;
   width: 60%;
@@ -1055,7 +1065,7 @@ div[dim-loadout] {
   right: 0;
   position: fixed;
   width: 100%;
-  z-index: 3;
+  z-index: 3000;
   bottom: 0;
   background: rgba(195, 188, 180, .9);
   color: #1a1e24;
@@ -1561,4 +1571,175 @@ button.toast-close-button {
 
 .equipped {
   position: absolute;
+}
+
+.itemViewer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: #2f2f2f;
+    margin-top: 51px;
+    z-index: 1000;
+    color: white;
+    overflow: auto;
+}
+
+
+.item-header {
+    margin: 0;
+    display: flex
+}
+
+.item-header h1 {
+    margin: 0 0 15px
+}
+
+.item-header .btn-group {
+    margin-left: auto
+}
+
+.item-page {
+    display: flex
+}
+
+.item-page .item-content {
+    flex-grow: 2
+}
+
+.item-page .item-aside {
+    margin: 0 20px;
+    /*min-width: 300px;
+    max-width: 300px*/
+}
+
+.item-page .item-aside .nice-block {
+    margin-top: 20px
+}
+
+.item-page .main-header {
+    display: flex;
+    margin-bottom: 20px
+}
+
+.item-page .main-header .item-icon {
+    min-width: 96px;
+    max-width: 96px
+}
+
+.item-page .main-header .item-icon .btn {
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0
+}
+
+.item-page .main-header .item-description {
+    font-size: 1.3em;
+    font-style: italic;
+    margin-left: 15px;
+    white-space: pre-wrap;
+    vertical-align: top
+}
+
+.item-page .primary-stat {
+    display: flex;
+    border-bottom: 1px solid #999;
+    margin-bottom: 5px
+}
+
+.item-page .primary-stat .name {
+    font-size: 2em
+}
+
+.item-page .primary-stat .value {
+    margin-left: auto;
+    color: #fff
+}
+
+.item-page .primary-stat .value .min {
+    font-size: 2em
+}
+
+.item-page .primary-stat .value .max {
+    font-size: 1em
+}
+
+.item-page .details {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    font-size: 1.1em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #999
+}
+
+.item-page .details dt {
+    margin: 4px 0 0;
+    width: 50%;
+    text-align: right
+}
+
+.item-page .details dd {
+    margin: 4px 0 0 auto;
+    width: 45%;
+    text-align: left;
+    color: #fff
+}
+
+.item-page .primary-stats {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999
+}
+
+.item-page .primary-stats .stat {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between
+}
+
+.item-page .primary-stats .stat .stat-name {
+    width: 80px;
+    margin-right: 10px;
+    text-align: right
+}
+
+.item-page .primary-stats .stat .stat-progress {
+    flex-grow: 2;
+    background: rgba(245,245,245,.5)
+}
+
+.item-page .primary-stats .stat .stat-progress .stat-progress-value {
+    height: 20px;
+    background: rgba(245,245,245,.9)
+}
+
+.item-page .primary-stats .stat .stat-value {
+    text-align: right;
+    margin-left: 10px;
+    width: 60px;
+    color: #fff
+}
+
+.item-page .secondary-stats {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #999
+}
+
+.item-page .secondary-stats dt {
+    margin: 4px 0 0;
+    width: 50%;
+    text-align: right;
+    font-weight: 400
+}
+
+.item-page .secondary-stats dd {
+    margin: 4px 0 0 auto;
+    width: 45%;
+    text-align: left;
+    color: #fff
 }

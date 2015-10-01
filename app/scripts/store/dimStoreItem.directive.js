@@ -54,10 +54,14 @@
 
         if (!_.isNull(dialogResult)) {
           dialogResult.close();
+          vm.itemSelected(item, false);
         } else {
           ngDialog.closeAll();
 
           if (!dimLoadoutService.dialogOpen) {
+
+            vm.itemSelected(item, true);
+
             var bottom = ($(element).offset().top < 300) ? ' move-popup-bottom' : '';
             var right = ((($('body').width() - $(element).offset().left - 320) < 0) ? ' move-popup-right' : '');
 
@@ -124,6 +128,13 @@
     vm.itemClicked = function clicked(item) {
       $rootScope.$broadcast('dim-store-item-clicked', {
         item: item
+      });
+    };
+
+    vm.itemSelected = function clicked(item, selected) {
+      $rootScope.$broadcast('dim-store-item-selected', {
+        item: item,
+        selected: selected
       });
     };
   }
