@@ -155,13 +155,13 @@ This is the home page content. If you see this, you are logged in. You will rema
           Right Menu
         </button>
         Vault Columns:
-        <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.colWidth)"
-          ng-model="vm.colWidth" render-col-options
+        <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.vaultColumns)"
+          ng-model="vm.vaultColumns" render-col-options
           ng-options="name for (name, value) in vm.columns">
         </select>
         Inventory Columns:
-        <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.colWidth)"
-          ng-model="vm.colWidth" render-col-options
+        <select class="btn btn-secondary" ng-change="invChangeCol(vm.invColumns)"
+          ng-model="vm.invColumns" render-col-options
           ng-options="name for (name, value) in vm.columns">
         </select>
       </div>

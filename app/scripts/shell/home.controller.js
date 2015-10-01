@@ -19,5 +19,9 @@
     $scope.vaultChangeCol = function(width) {
       console.log(width)
     }
+
+    $scope.invChangeCol = function(width){
+      console.log(width)
+    }
   }
 }());
