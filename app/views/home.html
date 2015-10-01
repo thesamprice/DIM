@@ -151,13 +151,32 @@ This is the home page content. If you see this, you are logged in. You will rema
 <div class="container-fluid">
   <div class="row dim-app-header">
     <div class="col-xs-12">
-      Header
-      <select class="btn btn-secondary" ng-change="vaultChangeCol()"
-        ng-model="colWidth" render-col-options
-        ng-options="name for (name, value) in columns">
-      </select>
+      <div class="navbar navbar-default navbar-fixed-top">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#leftMenu" data-canvas="body">
+          Left Menu
+        </button>
+        <button type="button" class="navbar-toggle pull-right" data-toggle="offcanvas" data-target="#rightMenu" data-canvas="body">
+          Right Menu
+        </button>
+      </div>
     </div>
   </div>
+  <nav id="leftMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+    <a class="navmenu-brand" href="#">All the left things</a>
+    <ul class="nav navmenu-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+  </nav>
+  <nav id="rightMenu" class="navmenu navmenu-default navmenu-fixed-right offcanvas" role="navigation">
+    <a class="navmenu-brand" href="#">All the right things</a>
+    <ul class="nav navmenu-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+  </nav>
   <div class="row dim-character-header">
     <div class="col-xs-12 col-sm-6 col-lg-3">
       Character 1
