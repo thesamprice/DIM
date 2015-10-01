@@ -7,7 +7,7 @@
     "angular-chrome-storage": "infomofo/angular-chrome-storage",
     "angular-ui-router": "~0.2.x",
     "bootstrap": "https://github.com/DestinyItemManager/bootstrap.git#v4-dev",
-    "components-font-awesome": "https://github.com/components/font-awesome.git",
+    "components-font-awesome": "https://github.com/FortAwesome/Font-Awesome.git",
     "hammerjs": "~2.0.4",
     "modernizr": "~2.8.3",
     "ngHammer": "https://github.com/DestinyItemManager/ngHammer.git",
