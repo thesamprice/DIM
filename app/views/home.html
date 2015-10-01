@@ -154,15 +154,15 @@ This is the home page content. If you see this, you are logged in. You will rema
         <button type="button" class="navbar-toggle pull-right" data-toggle="offcanvas" data-target="#rightMenu" data-canvas="body">
           Right Menu
         </button>
-        Vault Columns: 
-        <select class="btn btn-secondary" ng-change="vaultChangeCol()"
-          ng-model="colWidth" render-col-options
-          ng-options="name for (name, value) in columns">
+        Vault Columns:
+        <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.colWidth)"
+          ng-model="vm.colWidth" render-col-options
+          ng-options="name for (name, value) in vm.columns">
         </select>
-        Inventory Columns: 
-        <select class="btn btn-secondary" ng-change="vaultChangeCol()"
-          ng-model="colWidth" render-col-options
-          ng-options="name for (name, value) in columns">
+        Inventory Columns:
+        <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.colWidth)"
+          ng-model="vm.colWidth" render-col-options
+          ng-options="name for (name, value) in vm.columns">
         </select>
       </div>
     </div>

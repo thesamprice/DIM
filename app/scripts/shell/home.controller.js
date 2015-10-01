@@ -16,9 +16,8 @@
       $state.go('signin');
     };
 
-    $scope.vaultChangeCol = function() {
-      var me = $scope;
-      console.log(me.colWidth)
+    $scope.vaultChangeCol = function(width) {
+      console.log(width)
     }
   }
 }());
