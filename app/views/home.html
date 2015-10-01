@@ -126,11 +126,11 @@ This is the home page content. If you see this, you are logged in. You will rema
   }
 
   .item {
-    /*width: 100%;
+    width: 100%;
     height: 0;
-    padding-bottom: 100%;*/
-    /*width: 100vh;
-    height: 100vh;*/
+    /*padding-bottom: 100%;*/
+    width: 100vh;
+    height: 100vh;
     display: inline-block;
     width: 3.25em;
     height: 3.25em;
@@ -143,46 +143,126 @@ This is the home page content. If you see this, you are logged in. You will rema
     vertical-align: middle;
     display: table-cell;
   }
+
+  ul.navbar-nav .nav-link {
+    color:#fff !important;
+  }
+
+/* jasny styles */
+  html, body {
+    height: 100%;
+  }
+  body {
+    padding: 70px 0 0 0;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  @media (min-width: 1px) {
+    .navbar-toggle {
+      display: block !important;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    /*body {
+      padding: 70px 0 0 300px;
+    }*/
+    .navmenu {
+      padding-top: 0;
+    }
+  }
+
 </style>
-<div class="container-fluid">
-  <div class="row dim-app-header">
-    <div class="col-xs-12">
-      <div class="navbar navbar-default navbar-fixed-top">
-        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#leftMenu" data-canvas="body">
-          Left Menu
-        </button>
-        <button type="button" class="navbar-toggle pull-right" data-toggle="offcanvas" data-target="#rightMenu" data-canvas="body">
-          Right Menu
-        </button>
+<div id="slideMenu" class="navmenu navmenu-default navmenu-fixed-right offcanvas-lg">
+  <a class="navmenu-brand visible-md visible-lg" href="#">MENU</a>
+  <ul class="nav navmenu-nav">
+    <li class="active"><a href="./">Slide in</a></li>
+    <li><a href="../navmenu-push/">Push</a></li>
+    <li><a href="../navmenu-reveal/">Reveal</a></li>
+    <li><a href="../navbar-offcanvas/">Off canvas navbar</a></li>
+  </ul>
+  <ul class="nav navmenu-nav">
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+      <ul class="dropdown-menu navmenu-nav">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li class="dropdown-header">Nav header</li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div id="leftMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+  <a class="navmenu-brand" href="#">All the left things</a>
+  <ul class="nav navmenu-nav">
+    <li><a href="#">Bungie Account</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Settings</a></li>
+    <li><a href="#">Logout</a></li>
+  </ul>
+</div>
+<div id="rightMenu" class="navmenu navmenu-default navmenu-fixed-right offcanvas" role="navigation">
+  <a class="navmenu-brand" href="#">All the right things</a>
+  <ul class="nav navmenu-nav">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+</div>
+
+<nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
+  <a class="navbar-brand pull-left" href="#">DIM</a>
+  <ul class="nav navbar-nav pull-right">
+    <li class="nav-item">
+      <a class="nav-link navbar-toggle" data-toggle="offcanvas" data-target="#slideMenu">
+        Right Slide Menu
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link navbar-toggle" data-toggle="offcanvas" data-target="#leftMenu" data-canvas="body">
+        Left Menu Push
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link navbar-toggle" data-toggle="offcanvas" data-target="#rightMenu" data-canvas="body">
+        Right Menu Push
+      </a>
+    </li>
+    <li class="nav-item">
+      <div class="nav-link">
         Vault Columns:
         <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.vaultColumns)"
           ng-model="vm.vaultColumns" render-col-options
           ng-options="name for (name, value) in vm.columns">
         </select>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="nav-link">
         Inventory Columns:
         <select class="btn btn-secondary" ng-change="invChangeCol(vm.invColumns)"
           ng-model="vm.invColumns" render-col-options
           ng-options="name for (name, value) in vm.columns">
         </select>
       </div>
+    </li>
+  </ul>
+</nav>
+<div class="container container-fluid">
+  <div class="row dim-app-header">
+    <div class="col-xs-12">
     </div>
   </div>
-  <nav id="leftMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-    <a class="navmenu-brand" href="#">All the left things</a>
-    <ul class="nav navmenu-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
-  </nav>
-  <nav id="rightMenu" class="navmenu navmenu-default navmenu-fixed-right offcanvas" role="navigation">
-    <a class="navmenu-brand" href="#">All the right things</a>
-    <ul class="nav navmenu-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
-  </nav>
   <div class="row dim-character-header">
     <div class="col-xs-12 col-sm-6 col-lg-3">
       Character 1
