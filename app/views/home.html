@@ -55,6 +55,10 @@ This is the home page content. If you see this, you are logged in. You will rema
             flex-wrap: wrap;
   }
 
+  .dropdown {
+    float: right;
+  }
+
   .dim-character-items .col-xs-1, .dim-character-items .col-xs-2, .dim-character-items .col-xs-3, .dim-character-items .col-xs-4, .dim-character-items .col-xs-5, .dim-character-items .col-xs-6, .dim-character-items .col-xs-7, .dim-character-items .col-xs-8, .dim-character-items .col-xs-9, .dim-character-items .col-xs-10, .dim-character-items .col-xs-11, .dim-character-items .col-xs-12, .dim-character-items .col-sm-1, .dim-character-items .col-sm-2, .dim-character-items .col-sm-3, .dim-character-items .col-sm-4,
   .dim-character-items.col-sm-5, .dim-character-items .col-sm-6, .dim-character-items .col-sm-7, .dim-character-items .col-sm-8, .dim-character-items .col-sm-9, .dim-character-items .col-sm-10, .dim-character-items .col-sm-11, .dim-character-items .col-sm-12, .dim-character-items .col-md-1, .dim-character-items .col-md-2, .dim-character-items .col-md-3, .dim-character-items .col-md-4, .dim-character-items .col-md-5, .dim-character-items .col-md-6, .dim-character-items .col-md-7, .dim-character-items .col-md-8, .dim-character-items .col-md-9,
   .dim-character-items .col-md-10, .dim-character-items .col-md-11, .dim-character-items .col-md-12, .dim-character-items .col-lg-1, .dim-character-items .col-lg-2, .dim-character-items .col-lg-3, .dim-character-items .col-lg-4, .dim-character-items .col-lg-5, .dim-character-items .col-lg-6, .dim-character-items .col-lg-7, .dim-character-items .col-lg-8, .dim-character-items .col-lg-9, .dim-character-items .col-lg-10, .dim-character-items .col-lg-11, .dim-character-items .col-lg-12, .dim-character-items .col-xl-1,
@@ -148,6 +152,10 @@ This is the home page content. If you see this, you are logged in. You will rema
   <div class="row dim-app-header">
     <div class="col-xs-12">
       Header
+      <select class="btn btn-secondary" ng-change="vaultChangeCol()"
+        ng-model="colWidth" render-col-options
+        ng-options="name for (name, value) in columns">
+      </select>
     </div>
   </div>
   <div class="row dim-character-header">

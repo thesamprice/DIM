@@ -15,5 +15,10 @@
       principal.authenticate(null);
       $state.go('signin');
     };
+
+    $scope.vaultChangeCol = function() {
+      var me = $scope;
+      console.log(me.colWidth)
+    }
   }
 }());
