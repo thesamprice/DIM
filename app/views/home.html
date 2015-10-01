@@ -155,15 +155,9 @@ This is the home page content. If you see this, you are logged in. You will rema
           Right Menu
         </button>
         Vault Columns: 
-        <select class="btn btn-secondary" ng-change="vaultChangeCol()"
-          ng-model="colWidth" render-col-options
-          ng-options="name for (name, value) in columns">
-        </select>
+        <render-col-options for="vault" changefn="vaultChangeCol()"></render-col-options>
         Inventory Columns: 
-        <select class="btn btn-secondary" ng-change="vaultChangeCol()"
-          ng-model="colWidth" render-col-options
-          ng-options="name for (name, value) in columns">
-        </select>
+        <render-col-options for="inventory" changefn="inventoryChangeCol()"></render-col-options>
       </div>
     </div>
   </div>
