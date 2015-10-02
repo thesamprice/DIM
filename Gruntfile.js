@@ -411,6 +411,12 @@ module.exports = function(grunt) {
             '{,*/}*.js.map'
           ],
           dest: '<%= config.gsd %>/scripts'
+        },{
+          expand: true,
+          dot: true,
+          cwd: '.',
+          src: ['bower_components/components-font-awesome/fonts/*.*'],
+          dest: '<%= config.gsd %>'
         }]
       },
       babel: {
