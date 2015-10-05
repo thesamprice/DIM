@@ -26,7 +26,8 @@
 				    5: "vault-col-5",
 				    6: "vault-col-6",
 				    7: "vault-col-7",
-				    8: "vault-col-8"
+				    8: "vault-col-8",
+				    9: "vault-col-9"
 				}
 			};
 		}
