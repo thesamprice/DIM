@@ -30,6 +30,10 @@
 				    9: "vault-col-9"
 				}
 			};
+
+			// initialize column setting defaults
+			vm.invColumns = "inv-col-4";
+			vm.vaultColumns = "vault-col-5";
 		}
 
 	// more directives for home page here

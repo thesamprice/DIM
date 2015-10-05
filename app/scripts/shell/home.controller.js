@@ -23,5 +23,9 @@
     $scope.invChangeCol = function(colStyle){
       $scope.inventoryCustomColumns = colStyle;
     }
+
+    // initialize column settings defaults
+    $scope.inventoryCustomColumns = "inv-col-4";
+    $scope.vaultCustomColumns = "vault-col-5";
   }
 }());
