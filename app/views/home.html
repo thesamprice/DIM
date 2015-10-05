@@ -240,19 +240,19 @@ This is the home page content. If you see this, you are logged in. You will rema
     </li>
     <li class="nav-item">
       <div class="nav-link">
-        Vault Columns:
-        <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.vaultColumns)"
-          ng-model="vm.vaultColumns" render-col-options
-          ng-options="name for (name, value) in vm.columns.vault">
+        Inventory Columns:
+        <select class="btn btn-secondary" ng-change="invChangeCol(vm.invColumns)"
+          ng-model="vm.invColumns" render-col-options
+          ng-options="name for (name, value) in vm.columns.inventory">
         </select>
       </div>
     </li>
     <li class="nav-item">
       <div class="nav-link">
-        Inventory Columns:
-        <select class="btn btn-secondary" ng-change="invChangeCol(vm.invColumns)"
-          ng-model="vm.invColumns" render-col-options
-          ng-options="name for (name, value) in vm.columns.inventory">
+        Vault Columns:
+        <select class="btn btn-secondary" ng-change="vaultChangeCol(vm.vaultColumns)"
+          ng-model="vm.vaultColumns" render-col-options
+          ng-options="name for (name, value) in vm.columns.vault">
         </select>
       </div>
     </li>
