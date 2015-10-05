@@ -17,17 +17,16 @@
 
 			vm.columns = {
 				"inventory": {
-				    4: 4,
-				    5: 5,
-				    6: 6
+				    3: "inv-col-3",
+				    4: "inv-col-4",
+				    5: "inv-col-5"
 				},
 				"vault": {
-					4: 4,
-				    5: 5,
-				    6: 6,
-				    7: 7,
-				    8: 8,
-				    9: 9
+					4: "vault-col-4",
+				    5: "vault-col-5",
+				    6: "vault-col-6",
+				    7: "vault-col-7",
+				    8: "vault-col-8"
 				}
 			};
 		}

@@ -16,12 +16,12 @@
       $state.go('signin');
     };
 
-    $scope.vaultChangeCol = function(width) {
-      $scope.vaultCustomColumns = "col-xl-"+(Math.round(width/2));
+    $scope.vaultChangeCol = function(colStyle) {
+      $scope.vaultCustomColumns = colStyle;
     }
 
-    $scope.invChangeCol = function(width){
-      $scope.inventoryCustomColumns = "col-xl-"+(Math.round(width/2));
+    $scope.invChangeCol = function(colStyle){
+      $scope.inventoryCustomColumns = colStyle;
     }
   }
 }());

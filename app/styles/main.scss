@@ -65,6 +65,39 @@ body {
   }
 }
 
+/* Custom column styles to adjust widths JFLAY2015 */
+.inv-col-3 {
+  flex: 0 0 18rem;
+}
+
+.inv-col-4 {
+  flex: 0 0 22rem;
+}
+
+.inv-col-5 {
+  flex: 0 0 26rem;
+}
+
+.vault-col-4 {
+  flex: 0 0 18rem;
+}
+
+.vault-col-5 {
+  flex: 0 0 22rem;
+}
+
+.vault-col-6 {
+  flex: 0 0 26rem;
+}
+
+.vault-col-7 {
+  flex: 0 0 28rem;
+}
+
+.vault-col-8 {
+  flex: 0 0 30rem;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
