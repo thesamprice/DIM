@@ -27,5 +27,6 @@
     // initialize column settings defaults
     $scope.inventoryCustomColumns = "inv-col-4";
     $scope.vaultCustomColumns = "vault-col-5";
+    console.log($state.invColumns)
   }
 }());

@@ -32,8 +32,8 @@
 			};
 
 			// initialize column setting defaults
-			vm.invColumns = "inv-col-4";
-			vm.vaultColumns = "vault-col-5";
+			vm.invColumns = vm.columns.inventory["4"];
+			vm.vaultColumns = vm.columns.vault["5"];
 		}
 
 	// more directives for home page here
