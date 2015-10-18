@@ -3,14 +3,15 @@
 
   angular.module('app.services').factory('bungieService', bungieService);
 
-  bungieService.$inject = ['$q'];
+  bungieService.$inject = ['$q', 'bungieNetPlatform'];
 
-  function bungieService($q) {
+  function bungieService($q, bungieNetPlatform) {
     let apiKey = '57c5ff5864634503a0340ffdfbeb20c0';
 
     let service = {
       getToken: getBungleToken,
       getPlatforms: getPlatforms,
+      getStore: getStore,
       getStores: getStores,
       transferItem: transferItem,
       equipItem: equipItem
@@ -22,7 +23,15 @@
       return getBungleToken()
         .then((token) => {
           console.info(token);
+
+          bungieNetPlatform.initialize(apiKey, token);
+
+          return bungieNetPlatform.user.getBungieNetUser();
         });
+    }
+
+    function getStore() {
+
     }
 
     function getStores() {

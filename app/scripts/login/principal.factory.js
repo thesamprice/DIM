@@ -63,42 +63,33 @@
         if (!_.isUndefined(_identity)) {
           resolve(_identity);
         } else {
-          // otherwise, retrieve the identity data from the server, update the identity object, and then resolve.
-          //                   $http.get('/svc/account/identity', { ignoreErrors: true })
-          //                        .success(function(data) {
-          //                            _identity = data;
-          //                            _authenticated = true;
-          //                            deferred.resolve(_identity);
-          //                        })
-          //                        .error(function () {
-          //                            _identity = null;
-          //                            _authenticated = false;
-          //                            deferred.resolve(_identity);
-          //                        });
-
-          // for the sake of the demo, fake the lookup by using a timeout to create a valid
-          // fake identity. in reality,  you'll want something more like the $http request
-          // commented out above. in this example, we fake looking up to find the user is
-          // not logged in
           let self = this;
 
-          bungieService.getToken()
-            .then((token) => {
-              self.authenticate({
-                name: 'apple ' + token,
-                roles: ['User']
-              });
-              resolve(_identity);
+          bungieService.getPlatforms()
+            .then((response) => {
+              if (response.status === 200) {
+                var platform = response.data;
+
+                if (platform.ErrorCode === 1) {
+                  self.authenticate({
+                    user: platform.Response.user,
+                    roles: ['User']
+                  });
+
+                  resolve(_identity);
+                } else {
+                  self.authenticate(null);
+                  resolve(_identity);
+                }
+              } else {
+                self.authenticate(null);
+                resolve(_identity);
+              }
             })
             .catch((err) => {
               self.authenticate(null);
               resolve(_identity);
             });
-
-          // $timeout(() => {
-          //   self.authenticate(null);
-          //   resolve(_identity);
-          // }, 1000);
         }
       });
     }

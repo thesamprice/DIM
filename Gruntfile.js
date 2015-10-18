@@ -215,6 +215,14 @@ module.exports = function(grunt) {
           src: '{,*/}*.css',
           dest: '.tmp/styles/'
         }]
+      },
+      gsd: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '{,*/}*.css',
+          dest: '.tmp/styles/'
+        }]
       }
     },
 
@@ -446,6 +454,19 @@ module.exports = function(grunt) {
           ]
         },
         uglify: true
+      },
+      gsd: {
+        devFile: 'bower_components/modernizr/modernizr.js',
+        outputFile: '<%= config.gsd %>/scripts/vendor/modernizr.js',
+        files: {
+          extDot: 'last',
+          src: [
+            '<%= config.gsd %>/scripts/{,*/}*.js',
+            '<%= config.gsd %>/styles/{,*/}*.css',
+            '!<%= config.gsd %>/scripts/vendor/*'
+          ]
+        },
+        uglify: true
       }
     },
 
@@ -459,6 +480,12 @@ module.exports = function(grunt) {
         'babel'
       ],
       dist: [
+        'babel',
+        'sass',
+        'imagemin',
+        'svgmin'
+      ],
+      gsd: [
         'babel',
         'sass',
         'imagemin',
@@ -482,15 +509,13 @@ module.exports = function(grunt) {
     grunt.task.run([
       'clean:gsd',
       'build',
-      'copy:gsd',
-      'a',
-      // 'copy:gsd',
+      'CopyScripts',
       'watch'
     ]);
   });
 
 
-  grunt.registerTask('a', 'Getting Stuff Done!', function(target) {
+  grunt.registerTask('CopyScripts', 'Getting Stuff Done!', function(target) {
     // var tasks = ['build:dist'];
     //
     // if (grunt.option('beep')) {
@@ -504,17 +529,19 @@ module.exports = function(grunt) {
 
     // grunt.task.run([
     //   'build'
-    //   // 'copy:gsd',
-    //   // 'watch'
+    //   'watch'
     // ]);
 
     var concatFiles = grunt.config('concat.generated.files');
+
+    console.log(JSON.stringify(concatFiles, null, 2));
 
     var files = [];
 
     for (var i = 0; i < concatFiles.length; i++) {
       for (var j = 0; j < concatFiles[i].src.length; j++) {
         concatFiles[i].src[j] = concatFiles[i].src[j].replace("app\\bower", "bower");
+        concatFiles[i].src[j] = concatFiles[i].src[j].replace(".tmp\\", "");
       }
 
       var file = {
@@ -587,20 +614,31 @@ module.exports = function(grunt) {
     ]);
   });
 
-  grunt.registerTask('build', [
+  grunt.registerTask('dist', [
     'clean:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
-    'postcss',
+    'postcss:dist',
     'concat',
     'cssmin',
     'uglify',
     'copy:dist',
-    'modernizr',
+    'modernizr:dist',
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('build', [
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:gsd',
+    'postcss:gsd',
+    'concat',
+    'copy:gsd',
+    'modernizr:gsd'
   ]);
 
   grunt.registerTask('default', [

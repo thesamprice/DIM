@@ -16,42 +16,37 @@
     // route to root if no valid route found
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('site', {
-        'abstract': true,
-        // resolve: {
-        //   authorize: ['authorization',
-        //     function(authorization) {
-        //       return authorization.authorize();
-        //     }
-        //   ]
-        // },
-        template: '<div ui-view />'
-      }).state('home', {
-        parent: 'site',
+    $stateProvider.state('root', {
+        abstract: true,
+        resolve: {
+          authorize: ['authorization',
+            function(authorization) {
+              return authorization.authorize();
+            }
+          ]
+        },
+        templateUrl: 'views/site.html'
+      })
+      .state('home', {
+        parent: 'root',
         url: '/',
         data: {
           roles: ['User']
         },
-        views: {
-          'content@': {
-            templateUrl: 'views/home.html',
-            controller: 'HomeCtrl'
-          }
-        }
-      }).state('signin', {
-        parent: 'site',
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+      })
+      .state('signin', {
+        parent: 'root',
         url: '/signin',
         data: {
           roles: []
         },
-        views: {
-          'content@': {
-            templateUrl: 'views/signin.html',
-            controller: 'SigninCtrl'
-          }
-        }
-      }).state('restricted', {
-        parent: 'site',
+        templateUrl: 'views/signin.html',
+        controller: 'SigninCtrl'
+      })
+      .state('restricted', {
+        parent: 'root',
         url: '/restricted',
         data: {
           roles: ['Admin']
@@ -61,8 +56,9 @@
             templateUrl: 'views/restricted.html'
           }
         }
-      }).state('accessdenied', {
-        parent: 'site',
+      })
+      .state('accessdenied', {
+        parent: 'root',
         url: '/denied',
         data: {
           roles: []
@@ -78,10 +74,10 @@
   run.$inject = ['$rootScope', '$state', '$stateParams', 'authorization', 'principal', 'bungieService'];
 
   function run($rootScope, $state, $stateParams, authorization, principal, bungieService) {
-    let p = bungieService.getPlatforms()
-      .catch((error) => {
-        console.log(error);
-      });
+    // let p = bungieService.getPlatforms()
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toStateParams) {
       // track the state the user wants to go to; authorization service needs this
