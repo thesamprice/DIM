@@ -25,7 +25,8 @@
             }
           ]
         },
-        templateUrl: 'views/site.html'
+        templateUrl: 'views/site.html',
+        controller: 'SiteCtrl as vm'
       })
       .state('home', {
         parent: 'root',
