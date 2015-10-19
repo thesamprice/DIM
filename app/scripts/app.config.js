@@ -2,8 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .config(config)
-    .run(run);
+    .config(config);
 
   config.$inject = ['$stateProvider', '$urlRouterProvider', '$compileProvider'];
 
@@ -14,65 +13,80 @@
     $compileProvider.imgSrcSanitizationWhitelist(newImgSrcSanitizationWhiteList);
 
     // route to root if no valid route found
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/items');
 
     $stateProvider.state('site', {
-        abstract: true,
-        resolve: {
-          authorize: ['authorization',
-            function(authorization) {
-              return authorization.authorize();
-            }
-          ]
-        },
-        templateUrl: 'views/site.html',
-        controller: 'SiteCtrl as vm'
-      })
-      .state('home', {
-        parent: 'site',
-        url: '/',
-        data: {
-          roles: ['User']
-        },
-        templateUrl: 'views/home.html',
-        controller: 'HomeCtrl'
-      })
-      .state('signin', {
-        parent: 'site',
-        url: '/signin',
-        data: {
-          roles: []
-        },
-        templateUrl: 'views/signin.html',
-        controller: 'SigninCtrl'
-      })
-      .state('restricted', {
-        parent: 'site',
-        url: '/restricted',
-        data: {
-          roles: ['Admin']
-        },
-        templateUrl: 'views/restricted.html'
-      })
-      .state('accessdenied', {
-        parent: 'site',
-        url: '/denied',
-        data: {
-          roles: []
-        },
-        templateUrl: 'views/denied.html'
-      });
-  }
+      abstract: true,
+      resolve: {
+        authorize: ['authorization',
+          function(authorization) {
+            return authorization.authorize();
+          }
+        ],
+        stores: ['storeService', 'principal', '$q', function getStores(storeService, principal, $q) {
+          if (principal.isAuthenticated()) {
+            return storeService.getStores(true)
+              .catch(function(error) {
+                console.log(error);
+              });
+          } else {
+            return $q.when(null);
+          }
+        }]
+      },
+      templateUrl: 'views/site.html',
+      controller: 'SiteCtrl as vm'
+    })
 
-  run.$inject = ['$rootScope', '$state', '$stateParams', 'authorization', 'principal', 'bungieService'];
+    .state('items', {
+      parent: 'site',
+      url: '/items',
+      data: {
+        roles: ['User']
+      },
+      resolve: {
+        authorize: ['authorization',
+          function(authorization) {
+            return authorization.authorize();
+          }
+        ],
+        stores: ['storeService', function getStores(storeService) {
+          return storeService.getStores()
+            .catch(function(error) {
+              console.log(error);
+            });
+        }]
+      },
+      templateUrl: 'views/items.html',
+      controller: 'ItemsCtrl'
+    })
 
-  function run($rootScope, $state, $stateParams, authorization, principal, bungieService) {
-    $rootScope.$on('$stateChangeStart', function(event, toState, toStateParams) {
-      $rootScope.toState = toState;
-      $rootScope.toStateParams = toStateParams;
-      // if the principal is resolved, do an authorization check immediately. otherwise,
-      // it'll be done when the state it resolved.
-      if (principal.isIdentityResolved()) authorization.authorize();
+    .state('signin', {
+      parent: 'site',
+      url: '/signin',
+      data: {
+        roles: []
+      },
+      templateUrl: 'views/signin.html',
+      controller: 'SigninCtrl'
+    })
+
+    .state('restricted', {
+      parent: 'site',
+      url: '/restricted',
+      data: {
+        roles: ['Admin']
+      },
+      templateUrl: 'views/restricted.html'
+    })
+
+    .state('accessdenied', {
+      parent: 'site',
+      url: '/denied',
+      data: {
+        roles: []
+      },
+      templateUrl: 'views/denied.html'
     });
   }
 }());

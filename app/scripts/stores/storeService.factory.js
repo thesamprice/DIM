@@ -2,11 +2,11 @@
   'use strict';
 
   angular.module('app.stores')
-    .factory('StoreService', StoreService);
+    .factory('storeService', StoreService);
 
-  StoreService.$inject = [];
+  StoreService.$inject = ['$q', 'bungieService'];
 
-  function StoreService() {
+  function StoreService($q, bungieService) {
     var _stores = [];
 
     var service = {
@@ -17,11 +17,34 @@
     return service;
 
     function getStore(id) {
-      return _.find(_stores, (store) => store.id === id);
+      let store = _.find(_stores, (store) => store.id === id);
+
+      return $q.when(store);
     }
 
-    function getStores() {
-      return _stores;
+    function getStores(getLatest) {
+      if (getLatest) {
+        return bungieService.getStores()
+          .then((rawStores) => {
+            let store = null;
+
+            if (_.size(rawStores) > 0) {
+              _stores.splice(0, _.size(_stores));
+            }
+
+            _.each(rawStores, (rawStore) => {
+              if (rawStore.id === 'vault') {
+                store = new Vault(rawStore);
+              } else {
+                store = new Inventory(rawStore);
+              }
+            })
+
+            _stores.push(store)
+          });
+      }
+
+      return $q.when(_stores);
     }
   }
 

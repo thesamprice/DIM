@@ -6,11 +6,14 @@
   bungieService.$inject = ['$q', 'bungieNetPlatform'];
 
   function bungieService($q, bungieNetPlatform) {
-    let apiKey = '57c5ff5864634503a0340ffdfbeb20c0';
+    let _apiKey = '57c5ff5864634503a0340ffdfbeb20c0';
+    let _getBungleTokenPromise;
+    let _getBungieNetuserPromise;
+    let _getDestinyStoresPromise;
 
     let service = {
       getToken: getBungleToken,
-      getPlatforms: getPlatforms,
+      getUser: getUser,
       getStore: getStore,
       getStores: getStores,
       transferItem: transferItem,
@@ -19,63 +22,63 @@
 
     return service;
 
-    function getPlatforms() {
-      return getBungleToken()
-        .then((token) => {
-          console.info(token);
+    function reset() {
+      _getBungleTokenPromise = null;
+      _getBungieNetuserPromise = null;
+    }
 
-          bungieNetPlatform.initialize(apiKey, token);
+    function getUser() {
+      if (!_getBungieNetuserPromise) {
+        _getBungieNetuserPromise = getBungleToken()
+          .then((token) => {
+            return bungieNetPlatform.getBungieNetUser(_apiKey, token);
+          });
+      }
 
-          return bungieNetPlatform.user.getBungieNetUser();
-        });
+      return _getBungieNetuserPromise;
     }
 
     function getStore() {
-
+      return $q.when(null);
     }
 
-    function getStores() {
+    function getStores(getLatest) {
+      if (!_getDestinyStoresPromise) {
+        _getDestinyStoresPromise = getBungleToken()
+          .then(function(token) {
 
+          });
+      }
+
+      return $q.when(null);
     }
 
     function transferItem(item) {
-
+      return $q.when(null);
     }
 
     function equipItem(item) {
-
+      return $q.when(null);
     }
 
     function getBungleToken() {
-      return getBnetCookies()
-        .then((cookies) => {
+      if (!_getBungleTokenPromise) {
+        _getBungleTokenPromise = getBnetCookies()
+          .then((cookies) => {
             let cookie = _.find(cookies, function(cookie) {
               return cookie.name === 'bungled';
             });
 
             if (_.isUndefined(cookie)) {
+              reset();
               throw new Error(`No 'bungled' cookie found.`);
             }
 
             return cookie.value;
+          });
+      }
 
-            // if (!_.isUndefined(cookie)) {
-            //   resolve(cookie.value);
-            // } else {
-            //   chrome.tabs.query({
-            //     'url': '*://*.bungie.net/*'
-            //   }, function(tabs) {
-            //     if (_.size(tabs) === 0) {
-            //       chrome.tabs.create({
-            //         url: 'http://bungie.net',
-            //         active: false
-            //       });
-            //     }
-            //   });
-            //
-            //   reject(new Error('No bungled cookie found.'));
-            // }
-        });
+      return _getBungleTokenPromise;
     }
 
     function getBnetCookies() {
@@ -86,6 +89,7 @@
           if (_.size(cookies) > 0) {
             resolve(cookies);
           } else {
+            reset();
             reject(new Error('No cookies found.'));
           }
         });

@@ -3,7 +3,7 @@
 
   angular.module('app.login').factory('principal', principal);
 
-  principal.$inject = ['$q','bungieService'];
+  principal.$inject = ['$q', 'bungieService'];
 
   function principal($q, bungieService) {
     let _identity = undefined;
@@ -65,7 +65,8 @@
         } else {
           let self = this;
 
-          bungieService.getPlatforms()
+          bungieService.getUser()
+            .then(bungieService.getUser)
             .then((response) => {
               if (response.status === 200) {
                 var platform = response.data;

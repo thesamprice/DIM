@@ -14,7 +14,7 @@
       if ($scope.returnToState) {
         $state.go($scope.returnToState.name, $scope.returnToStateParams);
       } else {
-        $state.go('home');
+        $state.go('items');
       }
     };
   }
