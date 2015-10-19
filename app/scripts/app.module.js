@@ -6,8 +6,8 @@
     'app.directives',
     'app.services',
     'app.shell',
+    'app.stores',
     'ui.router',
-    'ngAnimate',
-    'chromeStorage'
+    'ngAnimate'
   ]);
 })();

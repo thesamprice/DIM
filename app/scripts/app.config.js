@@ -16,7 +16,7 @@
     // route to root if no valid route found
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('root', {
+    $stateProvider.state('site', {
         abstract: true,
         resolve: {
           authorize: ['authorization',
@@ -29,7 +29,7 @@
         controller: 'SiteCtrl as vm'
       })
       .state('home', {
-        parent: 'root',
+        parent: 'site',
         url: '/',
         data: {
           roles: ['User']
@@ -38,7 +38,7 @@
         controller: 'HomeCtrl'
       })
       .state('signin', {
-        parent: 'root',
+        parent: 'site',
         url: '/signin',
         data: {
           roles: []
@@ -47,46 +47,32 @@
         controller: 'SigninCtrl'
       })
       .state('restricted', {
-        parent: 'root',
+        parent: 'site',
         url: '/restricted',
         data: {
           roles: ['Admin']
         },
-        views: {
-          'content@': {
-            templateUrl: 'views/restricted.html'
-          }
-        }
+        templateUrl: 'views/restricted.html'
       })
       .state('accessdenied', {
-        parent: 'root',
+        parent: 'site',
         url: '/denied',
         data: {
           roles: []
         },
-        views: {
-          'content@': {
-            templateUrl: 'views/denied.html'
-          }
-        }
+        templateUrl: 'views/denied.html'
       });
   }
 
   run.$inject = ['$rootScope', '$state', '$stateParams', 'authorization', 'principal', 'bungieService'];
 
   function run($rootScope, $state, $stateParams, authorization, principal, bungieService) {
-    // let p = bungieService.getPlatforms()
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
     $rootScope.$on('$stateChangeStart', function(event, toState, toStateParams) {
-      // track the state the user wants to go to; authorization service needs this
       $rootScope.toState = toState;
       $rootScope.toStateParams = toStateParams;
       // if the principal is resolved, do an authorization check immediately. otherwise,
       // it'll be done when the state it resolved.
-      // if (principal.isIdentityResolved()) authorization.authorize();
+      if (principal.isIdentityResolved()) authorization.authorize();
     });
   }
 }());

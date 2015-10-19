@@ -2,6 +2,7 @@
   'use strict';
 
   angular.module('app.shell', [
-    'app.login'
+    'app.login',
+    'toggle-switch'
   ]);
 }());
